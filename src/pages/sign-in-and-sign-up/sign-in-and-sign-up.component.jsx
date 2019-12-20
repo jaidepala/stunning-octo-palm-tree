@@ -2,6 +2,7 @@ import React from 'react';
 
 // Components
     import SignIn from '../../components/sign-in/sign-in.component';
+    import SignUp from '../../components/sign-up/sign-up.component';
 
 // Stylings
     import './sign-in-and-sign-up.styles.scss';
@@ -9,8 +10,9 @@ import React from 'react';
 const SignInAndSignUpPage = () => {
 
     return (
-        <div>
+        <div className="sign-in-and-sign-up">
             <SignIn />
+            <SignUp />
         </div>
     );
 }; 

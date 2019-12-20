@@ -30,7 +30,7 @@ class SignIn extends Component {
         this.setState({
             email: '',
             password: ''
-        })
+        });
     };
 
     handleChange = event => {
