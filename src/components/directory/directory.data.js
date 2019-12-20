@@ -1,6 +1,6 @@
 const sections = [
   {
-    title: 'hats',
+    title: 'bats',
     imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
     id: 1,
     linkUrl: 'shop/hats'
@@ -32,3 +32,5 @@ const sections = [
     linkUrl: 'shop/mens'
   }
 ];
+
+export default sections;

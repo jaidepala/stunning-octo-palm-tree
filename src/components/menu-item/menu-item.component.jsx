@@ -28,6 +28,8 @@ const MenuItem = (props) => {
                 <span className="subtitle">
                     Shop Now
                 </span>
+
+                {/* <img src={require('../../assets/images/shop-img/hats/blue-beanie.png')} alt="name" /> */}
             </div>
         </div>
     );
