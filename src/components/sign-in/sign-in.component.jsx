@@ -8,7 +8,7 @@ import React, { Component } from 'react';
     import './sign-in.styles.scss';
 
 // Firebase
-    import { signInWithGoogle } from '../../firebase/firebase.utils';
+    import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
 class SignIn extends Component {
     
@@ -23,14 +23,26 @@ class SignIn extends Component {
         };
     };
 
-    handleSubmit = event => {
+    handleSubmit = async event => {
 
         event.preventDefault();
+        
+        const { email, password } = this.state;
 
-        this.setState({
-            email: '',
-            password: ''
-        });
+        try {
+
+            await auth.signInWithEmailAndPassword( email, password );
+
+            this.setState({
+                email: '',
+                password: ''
+            });
+
+        } catch( error ) {
+
+            console.error( error );
+        };
+
     };
 
     handleChange = event => {
@@ -67,7 +79,7 @@ class SignIn extends Component {
                         name="password"
                         onChange={ this.handleChange }
                         type="password"
-                        value={this.state.password}
+                        value={ this.state.password }
                         required
                         label="Password"
                     />
