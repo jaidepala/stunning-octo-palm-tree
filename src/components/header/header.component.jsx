@@ -9,6 +9,22 @@ import { Link } from 'react-router-dom';
 // Firebase
     import { auth } from '../../firebase/firebase.utils';
 
+// Redux
+/*
+!	Ref
+*	
+*	Connect is a higher order component,
+*	that lets us modify our component
+*	to have access to things related
+*	to redux.
+*	
+*	HOCs are funtions take component
+*   as arguemnts and then return a 
+*	new suped up component.
+*/
+
+    import { connect } from 'react-redux';
+
 const Header = ({ currentUser }) => {
 
     return (
@@ -34,4 +50,9 @@ const Header = ({ currentUser }) => {
     );
 };
 
-export default Header;
+const mapStateToProps = state => ({
+
+    currentUser: state.user.currentUser
+});
+
+export default connect(mapStateToProps)(Header);
