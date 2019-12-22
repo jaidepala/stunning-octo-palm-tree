@@ -5,7 +5,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 // Import Pages
 	import HomePage from './pages/homepage/homepage.component';
 	import ShopPage from './pages/shop/shop.component';
-	import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+	import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 
 // Import Components
 	import Header from './components/header/header.component';
@@ -16,7 +16,6 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 // Redux
     import { connect } from 'react-redux';
 	import { setCurrentUser } from './redux/user/user.actions'
-import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 
 class App extends Component {
 
