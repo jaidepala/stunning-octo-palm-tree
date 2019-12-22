@@ -8,7 +8,3 @@ export const addItem = cartItem => ({
     type: CartActionTypes.ADD_ITEM,
     payload: cartItem
 });
-
-export const getItem = cart => ({
-    type: CartActionTypes.GET_ITEM
-});
