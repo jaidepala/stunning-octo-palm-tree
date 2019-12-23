@@ -25,9 +25,9 @@ const CartItem = ({ item, removeItem, addItem }) => {
                     ${ price }
                 </span>
                 <span className="btn">
-                    <a className="minus" onClick={ () => removeItem(item) }>_</a>
+                    <span className="minus" onClick={ () => removeItem(item) }>_</span>
                     <span className="qty"> { quantity } </span> 
-                    <a className="add" onClick={ () => addItem(item) }>+</a>
+                    <span className="add" onClick={ () => addItem(item) }>+</span>
                 </span>
             </div>
         </div>
