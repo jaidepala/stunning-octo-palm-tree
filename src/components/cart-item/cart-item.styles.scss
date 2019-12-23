@@ -19,5 +19,32 @@
     .name {
       font-size: 16px;
     }
+    
+    .btn {
+
+      position: relative;
+
+      .minus{
+        line-height: 17px;
+        position: absolute; 
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .qty{
+        border: none; 
+        width: 80px;
+        padding: 5px;
+        font-size: 20px; 
+        text-align: center;
+        margin: 15px 15px;
+      }
+      .add{
+        line-height: 30px;
+        position: absolute; 
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+
   }
 }
