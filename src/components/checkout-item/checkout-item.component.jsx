@@ -5,11 +5,10 @@ import React from 'react';
 
 // Redux
     import { connect } from 'react-redux';
-    import { createStructuredSelector } from 'reselect';
-    import { removeItem } from '../../redux/cart/cart.actions';
-    
+    // import { createStructuredSelector } from 'reselect';
+    import { addItem, subtractItem, removeItem } from '../../redux/cart/cart.actions';
 
-const CheckoutItem = ({ cartItem }) => {
+const CheckoutItem = ({ cartItem, removeItem, addItem, subtractItem }) => {
 
     const { name, imageUrl, price, quantity } = cartItem;
     
@@ -25,21 +24,31 @@ const CheckoutItem = ({ cartItem }) => {
                 { name }
             </span>
             <span className="quantity">
-                { quantity }
+                <div className="arrow" onClick={ () => subtractItem(cartItem) }>
+                    &#10094;
+                </div>
+                <span className="value">
+                    { quantity }
+                </span>
+                <div className="arrow" onClick={ () => addItem(cartItem) }>
+                    &#10095;
+                </div>
             </span>
             <span className="price">
                 { price }
             </span>
-            <div className="remove-button" onClick={ () => removeItem() }>
+            <div className="remove-button" onClick={ () => removeItem(cartItem) }>
                 &#10005;
             </div>
         </div>
     );
 };
 
-// const mapDispatchToProps = createStructuredSelector({
-//     removeItem: item => dispatch(removeItem(item)),
-// });
+const mapDispatchToProps = dispatch => ({
 
-// export default connect( null, mapDispatchToProps )( CheckoutItem );
-export default CheckoutItem;
+    removeItem: item => dispatch(removeItem( item )),
+    addItem: item => dispatch(addItem( item )),
+    subtractItem: item => dispatch(subtractItem( item ))
+});
+
+export default connect( null, mapDispatchToProps )( CheckoutItem );

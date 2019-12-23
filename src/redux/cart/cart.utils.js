@@ -27,45 +27,19 @@ export const subtractItemFromCart = (cartItems, cartItemToRemove) => {
 
     const existingCartItem = cartItems.find(cartItem => cartItem.id === cartItemToRemove.id);
 
-    if(existingCartItem)
+    if(existingCartItem.quantity && existingCartItem.quantity === 1)
     {
-        if(existingCartItem.quantity && existingCartItem.quantity === 1)
-        {
-            return cartItems.map(cartItem =>
-                cartItem.id === cartItemToRemove.id ?
-                {  ...cartItem, quantity: cartItem.quantity - 1 }
-                : cartItem
-            ).filter(cartItem => cartItem.quantity > 0);
-        }
-        else
-        {
-            return cartItems.map(cartItem =>
-                cartItem.id === cartItemToRemove.id ?
-                {  ...cartItem, quantity: cartItem.quantity - 1 }
-                : cartItem
-            );
-        }
-
-    };
-
-    return [ ...cartItems, { ...cartItemToRemove, quantity: 0 } ];
+        return cartItems.filter(cartItem => cartItem.id !== cartItemToRemove.id);
+    }
+    
+    return cartItems.map(cartItem =>
+        cartItem.id === cartItemToRemove.id ?
+        {  ...cartItem, quantity: cartItem.quantity - 1 }
+        : cartItem
+    );
 };
 
 export const removeItemFromCart = (cartItems, cartItemToRemove) => {
 
-    const existingCartItem = cartItems.find(cartItem => cartItem.id === cartItemToRemove.id);
-
-    if(existingCartItem)
-    {
-        if(existingCartItem)
-        {
-            return cartItems.map(cartItem =>
-                cartItem.id === cartItemToRemove.id ?
-                {  ...cartItem, quantity: cartItem.quantity - 1 }
-                : cartItem
-            ).filter(cartItem => cartItem.quantity > 0);
-        }
-    };
-
-    return [ ...cartItems, { ...cartItemToRemove, quantity: 0 } ];
+    return cartItems.filter(cartItem => cartItem.id !== cartItemToRemove.id);
 };
