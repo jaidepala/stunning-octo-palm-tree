@@ -16,7 +16,7 @@ import React from 'react';
 // Router 
     import { withRouter } from 'react-router-dom';
 
-const CartDropdown = ({ cartItems, toggleCartHidden, history }) => {
+const CartDropdown = ({ cartItems, dispatch, history }) => {
     return (
         <div className="cart-dropdown">
             <div className="cart-items">
@@ -34,20 +34,33 @@ const CartDropdown = ({ cartItems, toggleCartHidden, history }) => {
                     </span>)
                 }
             </div>
-            <CustomButton onClick={ () => { toggleCartHidden(); history.push('/checkout'); } }>
+            <CustomButton onClick={ () => { dispatch(toggleCartHidden()); history.push('/checkout'); } }>
                 GO TO CHECKOUT
             </CustomButton>
         </div>
     );
 };
 
-
-const mapDispatchToProps = dispatch => ({
-    toggleCartHidden: () => dispatch(toggleCartHidden())
-});
+/*
+!	Ref
+*	
+*	Dispatch action shorthand
+*   
+*   connect passes dispatch into
+*   our components as a prop if
+*   we do not supply a second
+*   argument to connect.
+*   
+*   if we need to make one off 
+*   action dispatches, there's
+*   no reason to write another
+*   mapDispatchToProps, as it
+*   might be more verbose.
+*   
+*/
 
 const mapStateToProps = ( state ) => createStructuredSelector({
     cartItems: selectCartItems
 });
 
-export default withRouter(connect( mapStateToProps, mapDispatchToProps )( CartDropdown ));
+export default withRouter(connect( mapStateToProps )( CartDropdown ));

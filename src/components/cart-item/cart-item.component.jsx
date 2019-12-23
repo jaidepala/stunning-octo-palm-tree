@@ -5,10 +5,10 @@ import React from 'react';
 
 // Redux
     import { connect } from 'react-redux';
-    import { removeItem, addItem } from '../../redux/cart/cart.actions';
+    import { subtractItem, addItem } from '../../redux/cart/cart.actions';
 
 // const CartItem = ({ item: { imageUrl, price, name, quantity, removeItem } }) => {
-const CartItem = ({ item, removeItem, addItem }) => {
+const CartItem = ({ item, subtractItem, addItem }) => {
 
     const { imageUrl, price, name, quantity } = item;
 
@@ -25,7 +25,7 @@ const CartItem = ({ item, removeItem, addItem }) => {
                     ${ price }
                 </span>
                 <span className="btn">
-                    <span className="minus" onClick={ () => removeItem(item) }>_</span>
+                    <span className="minus" onClick={ () => subtractItem(item) }>_</span>
                     <span className="qty"> { quantity } </span> 
                     <span className="add" onClick={ () => addItem(item) }>+</span>
                 </span>
@@ -36,7 +36,7 @@ const CartItem = ({ item, removeItem, addItem }) => {
 
 const mapDispatchToProps = dispatch => ({
 
-    removeItem: item => dispatch(removeItem(item)),
+    subtractItem: item => dispatch(subtractItem(item)),
     addItem: item => dispatch(addItem(item))
 });
 
